@@ -45,42 +45,6 @@ La aplicación consumirá información desde una API proporcionada por la empres
 
 ---
 
-# Requerimientos Funcionales
-
-### RF01
-
-El sistema debe permitir el acceso mediante autenticación integrada con Slack.
-
-### RF02
-
-El sistema debe visualizar los principales indicadores de gestión digital.
-
-### RF03
-
-El sistema debe permitir aplicar filtros dinámicos a la información.
-
-### RF04
-
-El sistema debe ser accesible mediante navegador web.
-
----
-
-# KPIs Principales
-
-* Porcentaje de Ventas (%Venta)
-* Cantidad de Ventas (Q Venta)
-* Monto Total de Ventas ($ Venta)
-* Promedio de Ventas
-* Clientes Interesados
-* Clientes en Negociación
-* Pagos Pendientes
-* Oportunidades Perdidas
-* Promedio de Días para Venta
-* Mensajes Atendidos por Intervalo de Tiempo
-* Cambio de Estado por Intervalo de Tiempo
-
----
-
 # Estructura del Proyecto
 
 ```text
