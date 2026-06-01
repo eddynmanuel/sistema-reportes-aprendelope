@@ -106,9 +106,10 @@ const SlackMockPage = () => {
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Espacio de Slack</label>
+              <label htmlFor="slack-workspace" className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Espacio de Slack</label>
               <div className="flex bg-[#1A1D21] border border-white/10 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-[#3F0E40]">
                 <input
+                  id="slack-workspace"
                   type="text"
                   value={workspace}
                   onChange={(e) => setWorkspace(e.target.value)}
@@ -119,8 +120,9 @@ const SlackMockPage = () => {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Correo Electrónico</label>
+              <label htmlFor="slack-email" className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Correo Electrónico</label>
               <input
+                id="slack-email"
                 type="email"
                 required
                 placeholder="nombre@aprendelope.com"
@@ -131,8 +133,9 @@ const SlackMockPage = () => {
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Contraseña</label>
+              <label htmlFor="slack-password" className="text-xs font-bold text-[#ABACAD] uppercase tracking-wider pl-1">Contraseña</label>
               <input
+                id="slack-password"
                 type="password"
                 required
                 placeholder="••••••••"

@@ -47,6 +47,7 @@ const SettingsPage = () => {
               <div className="space-y-1">
                 <label htmlFor="settings-company-name" className="text-xs font-bold text-gray-500 uppercase pl-1">Nombre de la Empresa</label>
                 <input
+                  id="settings-company-name"
                   type="text"
                   defaultValue="AprendeLoPE"
                   className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-semibold focus:outline-hidden focus:ring-2 focus:ring-brand-purple/20 focus:border-brand-purple"
