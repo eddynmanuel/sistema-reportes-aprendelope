@@ -23,7 +23,7 @@ const AdvisorFilter = () => {
         className="
           w-full bg-gray-50 border border-gray-200 rounded-xl
           px-4 py-2.5 text-sm text-gray-700
-          focus:ring-2 focus:ring-[#34155E]/30 focus:border-[#34155E] focus:outline-none
+          focus:ring-2 focus:ring-brand-purple/30 focus:border-brand-purple focus:outline-none
           transition-all duration-200 cursor-pointer
         "
       >

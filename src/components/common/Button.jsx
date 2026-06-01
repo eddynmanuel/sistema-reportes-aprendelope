@@ -39,7 +39,7 @@ const Button = ({
       disabled={disabled}
       className={`${base} ${variants[variant]} ${className}`}
     >
-      {Icon && <Icon className="w-4 h-4 flex-shrink-0" />}
+      {Icon && <Icon className="w-4 h-4 shrink-0" />}
       {label}
     </button>
   );

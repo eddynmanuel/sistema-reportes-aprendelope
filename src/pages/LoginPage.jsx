@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthLayout from '../layouts/AuthLayout';
 import { useAuth } from '../hooks/useAuth';
-import { AlertCircle, CheckCircle2, Lock, ArrowRightLeft, ShieldCheck, Loader2 } from 'lucide-react';
+import { CheckCircle2, ArrowRightLeft, ShieldCheck, Loader2 } from 'lucide-react';
 import Button from '../components/common/Button';
 
 // Mock avatar representing a real Slack profile
@@ -27,9 +27,8 @@ const LoginPage = () => {
 
   // Monitor cross-tab communication events
   useEffect(() => {
-    // Force active state to true on mount to perfectly align with your open Slack tab!
+    // Ensure localStorage is in sync on mount
     localStorage.setItem('slack_session_active', 'true');
-    setSlackSessionActive(true);
 
     const channel = new BroadcastChannel('slack_auth_channel');
     
@@ -54,48 +53,25 @@ const LoginPage = () => {
 
   // Handle clicking "Continuar con Slack"
   const handleSlackClick = () => {
-    if (slackSessionActive) {
-      setShowAuthContainer(true);
+    const clientId = import.meta.env.VITE_SLACK_CLIENT_ID;
+    const redirectUri = import.meta.env.VITE_SLACK_REDIRECT_URI;
+    
+    if (!clientId) {
+      alert('Falta configurar VITE_SLACK_CLIENT_ID en el archivo .env');
       return;
     }
 
-    setIsCheckingSlack(true);
-    let responded = false;
-
-    const channel = new BroadcastChannel('slack_auth_channel');
+    // URL oficial de autorización de Slack (Sign in with Slack via OpenID Connect)
+    const slackAuthUrl = `https://slack.com/openid/connect/authorize?response_type=code&scope=openid%20profile%20email&client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}`;
     
-    const tempListener = (event) => {
-      if (event.data === 'PONG_SLACK') {
-        responded = true;
-        setSlackSessionActive(true);
-        setShowAuthContainer(true);
-        setIsCheckingSlack(false);
-        channel.removeEventListener('message', tempListener);
-      }
-    };
-    
-    channel.addEventListener('message', tempListener);
-    
-    // Broadcast ping to detect if Slack is open in another tab
-    channel.postMessage('PING_SLACK');
-
-    // Wait a brief moment for same-origin tabs to respond
-    setTimeout(() => {
-      channel.removeEventListener('message', tempListener);
-      channel.close();
-      
-      if (!responded) {
-        setIsCheckingSlack(false);
-        // Redirect: Open Slack Mock portal in a new tab
-        window.open('/slack-mock', '_blank');
-      }
-    }, 450);
+    // Redirigir navegador a la autenticación real de Slack
+    globalThis.location.href = slackAuthUrl;
   };
 
   // Perform full authorization and transition to dashboard
   const handleAuthorize = () => {
     // Generate mock token and log user in via context
-    const mockToken = 'slack_oauth_token_' + Math.random().toString(36).substr(2, 9);
+    const mockToken = 'slack_oauth_token_' + Math.random().toString(36).substring(2, 11);
     login(mockToken, 'Manuel Gómez', MOCK_SLACK_AVATAR);
     navigate('/dashboard');
   };

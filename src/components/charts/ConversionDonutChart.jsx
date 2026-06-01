@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Card from '../common/Card';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { MOCK_CONVERSION_DATA } from '../../constants/dashboardConfig';
 
 const CustomTooltip = ({ active, payload }) => {
@@ -45,18 +45,14 @@ const ConversionDonutChart = () => {
             <Tooltip content={<CustomTooltip />} />
             <Legend verticalAlign="bottom" height={36} iconType="circle" />
             <Pie
-              data={MOCK_CONVERSION_DATA}
+              data={MOCK_CONVERSION_DATA.map((entry) => ({ ...entry, fill: entry.color }))}
               cx="50%"
               cy="45%"
               innerRadius={60}
               outerRadius={85}
               paddingAngle={5}
               dataKey="value"
-            >
-              {MOCK_CONVERSION_DATA.map((entry) => (
-                <Cell key={entry.name} fill={entry.color} />
-              ))}
-            </Pie>
+            />
           </PieChart>
         </ResponsiveContainer>
         

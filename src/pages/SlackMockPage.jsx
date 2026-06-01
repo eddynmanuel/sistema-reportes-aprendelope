@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShieldCheck, MessageSquare, Check, Users } from 'lucide-react';
+import { ShieldCheck, Check } from 'lucide-react';
 
 const SlackMockPage = () => {
   const [workspace, setWorkspace] = useState('aprendelope');

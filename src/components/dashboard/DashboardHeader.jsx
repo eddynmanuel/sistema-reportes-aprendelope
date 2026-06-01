@@ -40,9 +40,8 @@ const DashboardHeader = () => {
         <DateFilter />
       </div>
 
-      {/* ── Panel de filtros ── */}
       <div className="p-5 bg-white rounded-2xl shadow-card border border-gray-100 flex flex-wrap items-end gap-4">
-        <div className="flex items-center gap-2 text-gray-400 mr-1 flex-shrink-0">
+        <div className="flex items-center gap-2 text-gray-400 mr-1 shrink-0">
           <SlidersHorizontal className="w-4 h-4" />
           <span className="text-xs font-bold uppercase tracking-wider">Filtros</span>
         </div>
@@ -52,7 +51,7 @@ const DashboardHeader = () => {
         <ChannelFilter />
 
         {/* Acciones */}
-        <div className="flex items-end gap-2 ml-auto flex-shrink-0">
+        <div className="flex items-end gap-2 ml-auto shrink-0">
           {hasActiveFilters && (
             <Button
               label="Limpiar"
@@ -65,7 +64,7 @@ const DashboardHeader = () => {
             label="Aplicar filtros"
             variant="primary"
             onClick={() => {
-              // TODO: trigger refetch con los filtros actuales del contexto
+              // Realizar refetch con los filtros actuales del contexto
               console.log('Filtros aplicados:', filters);
             }}
           />

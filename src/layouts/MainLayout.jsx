@@ -51,12 +51,12 @@ const SidebarNavItem = ({ item, isActive }) => {
       `}
     >
       <Icon
-        className={`w-5 h-5 flex-shrink-0 transition-transform duration-200
-          ${isActive ? 'text-[#F9A825]' : 'group-hover:scale-110'}`}
+        className={`w-5 h-5 shrink-0 transition-transform duration-200
+          ${isActive ? 'text-brand-yellow' : 'group-hover:scale-110'}`}
       />
       <span className="flex-1">{item.label}</span>
       {isActive && (
-        <ChevronRight className="w-4 h-4 text-[#EE531F] opacity-70" />
+        <ChevronRight className="w-4 h-4 text-brand-orange opacity-70" />
       )}
     </Link>
   );
@@ -85,7 +85,7 @@ const MainLayout = ({ children }) => {
       {/* ─────────────────────────────
           SIDEBAR
       ───────────────────────────── */}
-      <aside className="w-64 min-h-screen bg-brand-purple flex flex-col shrink-0 sticky top-0 overflow-hidden">
+      <aside className="w-64 h-screen bg-brand-purple flex flex-col shrink-0 sticky top-0 overflow-y-auto">
 
         {/* Orbe decorativo sutil */}
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-orange rounded-full opacity-10 blur-[60px] pointer-events-none" />

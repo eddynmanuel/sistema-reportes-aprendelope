@@ -3,6 +3,9 @@ import LoginPage from '../pages/LoginPage';
 import DashboardPage from '../pages/DashboardPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SlackMockPage from '../pages/SlackMockPage';
+import AuthCallbackPage from '../pages/AuthCallbackPage';
+import ReportsPage from '../pages/ReportsPage';
+import SettingsPage from '../pages/SettingsPage';
 import PropTypes from 'prop-types';
 
 import { useAuth } from '../hooks/useAuth';
@@ -29,12 +32,31 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/slack-mock" element={<SlackMockPage />} />
+        <Route path="/auth/callback" element={<AuthCallbackPage />} />
         
         <Route 
           path="/dashboard" 
           element={
             <PrivateRoute>
               <DashboardPage />
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/reportes" 
+          element={
+            <PrivateRoute>
+              <ReportsPage />
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/configuracion" 
+          element={
+            <PrivateRoute>
+              <SettingsPage />
             </PrivateRoute>
           } 
         />

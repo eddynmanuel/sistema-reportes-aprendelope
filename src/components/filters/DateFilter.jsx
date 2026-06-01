@@ -15,7 +15,7 @@ const DateFilter = () => {
         id="date-range-select"
         value={filters.dateRange}
         onChange={(e) => updateFilter('dateRange', e.target.value)}
-        className="bg-transparent font-semibold text-[#34155E] focus:outline-none cursor-pointer"
+        className="bg-transparent font-semibold text-brand-purple focus:outline-none cursor-pointer"
       >
         {DATE_RANGE_OPTIONS.map((opt) => (
           <option key={opt.value} value={opt.value}>

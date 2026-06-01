@@ -16,7 +16,7 @@ const SummarySection = ({ text, metrics = [] }) => {
     <div
       className="
         flex flex-col sm:flex-row sm:items-center gap-4
-        bg-white border-l-4 border-[#EE531F]
+        bg-white border-l-4 border-brand-orange
         px-5 py-4 rounded-r-2xl mb-7
         shadow-card
       "
@@ -53,7 +53,7 @@ const SummarySection = ({ text, metrics = [] }) => {
       )}
 
       {/* Última actualización */}
-      <div className="flex items-center gap-1.5 text-gray-400 text-xs flex-shrink-0">
+      <div className="flex items-center gap-1.5 text-gray-400 text-xs shrink-0">
         <RefreshCw className="w-3 h-3" />
         <span>Actualizado: <strong className="text-gray-500">{lastUpdated}</strong></span>
       </div>

@@ -28,7 +28,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
         {/* Header */}
         <div className="flex items-center justify-between mb-5">
           {title && (
-            <h2 className="text-lg font-bold text-[#34155E]">{title}</h2>
+            <h2 className="text-lg font-bold text-brand-purple">{title}</h2>
           )}
           <button
             onClick={onClose}
