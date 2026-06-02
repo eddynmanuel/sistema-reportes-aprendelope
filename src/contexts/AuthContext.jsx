@@ -20,23 +20,34 @@ export const AuthProvider = ({ children }) => {
     checkAuth();
   }, []);
 
-  // useMemo para que el valor no cambie en cada render
   const value = useMemo(() => ({
     isAuthenticated,
     user,
     loading,
-    login: (token, name, avatar) => {
-      localStorage.setItem('slack_token', token);
-      localStorage.setItem('slack_user_name', name);
-      localStorage.setItem('slack_user_avatar', avatar);
+
+    /**
+     * Guarda la sesión real de Slack en el contexto y en localStorage.
+     * Todos los campos vienen 100% del OAuth — ninguno es simulado.
+     *
+     * @param {string}      token  - access_token de Slack
+     * @param {string}      name   - Nombre real del usuario (de openid.connect.userInfo)
+     * @param {string|null} avatar - URL de la foto de perfil de Slack (puede ser null)
+     * @param {string|null} email  - Correo electrónico de Slack (puede ser null)
+     */
+    login: (token, name, avatar, email) => {
+      localStorage.setItem('slack_token',       token);
+      localStorage.setItem('slack_user_name',   name);
+      localStorage.setItem('slack_user_avatar', avatar  ?? '');
+      localStorage.setItem('slack_user_email',  email   ?? '');
       setIsAuthenticated(true);
-      setUser({ name, avatar });
+      setUser({ name, avatar: avatar ?? null, email: email ?? null });
     },
+
     logout: () => {
       authService.logout();
       setIsAuthenticated(false);
       setUser(null);
-    }
+    },
   }), [isAuthenticated, user, loading]);
 
   return (

@@ -14,9 +14,14 @@ export const authService = {
     const token = localStorage.getItem('slack_token');
     if (!token) return { isValid: false };
 
-    const name = localStorage.getItem('slack_user_name') || 'Manuel Gómez';
-    const avatar = localStorage.getItem('slack_user_avatar') || '';
-    return { isValid: true, user: { name, avatar } };
+    const name   = localStorage.getItem('slack_user_name')   || null;
+    const avatar = localStorage.getItem('slack_user_avatar') || null;
+    const email  = localStorage.getItem('slack_user_email')  || null;
+
+    // Si no hay nombre guardado, la sesión no completó el OAuth correctamente
+    if (!name) return { isValid: false };
+
+    return { isValid: true, user: { name, avatar, email } };
   },
 
   /**

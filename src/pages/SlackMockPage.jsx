@@ -66,7 +66,7 @@ const SlackMockPage = () => {
           
           <h1 className="text-xl font-bold text-white mb-2">Sesión Abierta en Slack</h1>
           <p className="text-sm text-[#ABACAD] mb-6">
-            Tienes una sesión iniciada con <strong className="text-white">Manuel Gómez</strong> en el espacio <strong className="text-white">{workspace}.slack.com</strong>.
+            Tienes una sesión iniciada con <strong className="text-white">{email.split('@')[0] || 'tu usuario'}</strong> en el espacio <strong className="text-white">{workspace}.slack.com</strong>.
           </p>
 
           <div className="p-4 bg-[#1A1D21] border border-white/5 rounded-xl text-xs space-y-2 mb-8 text-left">

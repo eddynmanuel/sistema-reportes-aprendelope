@@ -76,7 +76,7 @@ const MainLayout = ({ children }) => {
   const { logout, user } = useAuth();
 
   const currentPage = NAV_ITEMS.find((item) => location.pathname === item.path)?.label ?? 'Dashboard';
-  const userName = user?.name || 'Manuel Gómez';
+  const userName = user?.name || 'Usuario';
   const userAvatar = user?.avatar;
 
   return (
