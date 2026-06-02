@@ -26,9 +26,9 @@ const DashboardHeader = () => {
     <header className="mb-8" style={{ animation: 'fade-up 0.4s ease both' }}>
 
       {/* ── Título de sección ── */}
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
         <div>
-          <h2 className="text-2xl font-black text-gray-900 tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
             Dashboard General
           </h2>
           <p className="text-sm text-gray-400 mt-0.5 font-medium">
@@ -40,7 +40,7 @@ const DashboardHeader = () => {
         <DateFilter />
       </div>
 
-      <div className="p-5 bg-white rounded-2xl shadow-card border border-gray-100 flex flex-wrap items-end gap-4">
+      <div className="p-4 sm:p-5 bg-white rounded-2xl shadow-card border border-gray-100 flex flex-wrap items-end gap-3">
         <div className="flex items-center gap-2 text-gray-400 mr-1 shrink-0">
           <SlidersHorizontal className="w-4 h-4" />
           <span className="text-xs font-bold uppercase tracking-wider">Filtros</span>
@@ -63,10 +63,6 @@ const DashboardHeader = () => {
           <Button
             label="Aplicar filtros"
             variant="primary"
-            onClick={() => {
-              // Realizar refetch con los filtros actuales del contexto
-              console.log('Filtros aplicados:', filters);
-            }}
           />
         </div>
       </div>
